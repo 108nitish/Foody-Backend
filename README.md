@@ -13,8 +13,7 @@ Foody Backend is the server-side of the **Foody Website**, providing data to bot
 ## 🚀 Features
 - **User Authentication**: Secure JWT-based authentication with password hashing using `bcrypt`. 
 - **Data Management**: Handles user data, menu items, orders, and payments.
-- **File Uploads**: Uses `multer` for image and file handling.
-- **Secure Payment Gateway**: Integrated with `Stripe` for handling transactions.
+- **File Uploads**: Uses `multer` for image and file handling. 
 - **Cross-Origin Requests**: Enabled using `CORS` for frontend communication.
 
 ---
