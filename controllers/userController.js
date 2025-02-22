@@ -48,14 +48,15 @@ const registerUser = async (req, res) => {
         const newUser = new userModel({ name, email, password: hashedPassword });
         try {
             const user = await newUser.save();
+            const token = createToken(user._id);
+            res.json({ success: true, message: "User Registered", token });
         } catch (err) {
             console.error("MongoDB Save Error:", err);
             return res.json({ success: false, message: "Database Save Error", error: err.message });
         }
 
 
-        const token = createToken(user._id);
-        res.json({ success: true, message: "User Registered", token });
+        
     } catch (error) {
         res.json({ success: false, message: "Server Error" });
     }
