@@ -46,7 +46,13 @@ const registerUser = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new userModel({ name, email, password: hashedPassword });
-        const user = await newUser.save();
+        try {
+            const user = await newUser.save();
+        } catch (err) {
+            console.error("MongoDB Save Error:", err);
+            return res.json({ success: false, message: "Database Save Error", error: err.message });
+        }
+
 
         const token = createToken(user._id);
         res.json({ success: true, message: "User Registered", token });
